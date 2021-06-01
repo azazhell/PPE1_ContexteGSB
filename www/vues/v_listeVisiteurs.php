@@ -13,12 +13,12 @@
                         $nom = $unVisiteur['nom'];                       
                         $prenom = $unVisiteur['prenom']; 
                         
-                        //permet de faire apparaître la liste de nom-prenom dans l'ordre alphabétique.
+                        //évite les doublons de l'array et sélectionne le premier élément de la liste déroulante
                         $compteur = count($unVisiteur);
-                        
+                        var_dump($compteur);
                         if ($id == $compteur) {
                             ?>
-                            <option selected value="<?php echo $id ?>">
+                            <option label="<?php echo $id ?>" selected value="<?php echo $id ?>">
                                 <?php echo $nom . ' ' . $prenom ?> </option>
                             <?php
                         } else {

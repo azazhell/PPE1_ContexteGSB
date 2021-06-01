@@ -44,11 +44,13 @@ if ($estConnecte && $_SESSION['comptable'] == 1) {
                     }
                     ?>     
                 </select>
-            </div>          
+            </div>
+            <input id="ok" type="submit" value="Valider" class="btn btn-success" 
+                   role="button">          
 		</form>
     </div>
 </div>
-<h2>Valider la fiche de frais</h2>            
+         
 <?php
 #################### partie visiteur ####################
 } else {
