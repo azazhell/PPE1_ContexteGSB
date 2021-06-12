@@ -13,47 +13,6 @@
  * @version   GIT: <0>
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
-
-#################### partie comptable ####################
-
-if ($estConnecte && $_SESSION['comptable'] == 1) {
-?>
-<div class="row">
-    <div class="col-md-4">
-        <form action="index.php?uc=validerFrais&action=voirFrais" 
-              method="post" role="form">
-            <div class="form-group">
-                <label for="lstMois" accesskey="n">Mois : </label>
-                <select id="lstMois" name="lstMois" class="form-control">
-                    <?php
-                    foreach ($lesMois as $unMois) {
-                        $mois = $unMois['mois'];
-                        $numAnnee = $unMois['numAnnee'];
-                        $numMois = $unMois['numMois'];
-                        if ($mois == $moisASelectionner) {
-                            ?>
-                            <option selected value="<?php echo $mois ?>">
-                                <?php echo $numMois . '/' . $numAnnee ?> </option>
-                            <?php
-                        } else {
-                            ?>
-                            <option value="<?php echo $mois ?>">
-                                <?php echo $numMois . '/' . $numAnnee ?> </option>
-                            <?php
-                        }
-                    }
-                    ?>     
-                </select>
-            </div>
-            <input id="ok" type="submit" value="Valider" class="btn btn-success" 
-                   role="button">          
-		</form>
-    </div>
-</div>
-         
-<?php
-#################### partie visiteur ####################
-} else {
 ?>
 <div class="row">
     <div class="col-md-4">
@@ -98,4 +57,3 @@ if ($estConnecte && $_SESSION['comptable'] == 1) {
         </form>
     </div>
 </div>
-<?php } ?>

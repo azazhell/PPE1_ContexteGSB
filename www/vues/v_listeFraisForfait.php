@@ -23,7 +23,7 @@ if ($estConnecte && $_SESSION['comptable'] == 1) {
     <h3>Eléments forfaitisés</h3>
     <div class="col-md-4">
         <form method="post" 
-              action="index.php?uc=validerFrais&action=corrigerFraisForfait"
+              action="index.php?uc=validerFrais&action=correction"
               role="form">
             <fieldset>       
                 <?php
