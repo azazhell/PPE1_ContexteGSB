@@ -29,6 +29,8 @@
     <body>
         <div class="container">
             <?php
+#################### partie visiteur ####################
+
             $uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_STRING);
             if ($estConnecte && $_SESSION['comptable'] == 0) {
             ?>
@@ -73,6 +75,9 @@
                 </div>
             </div>
             <?php
+            
+#################### partie comptable ####################
+
             }elseif ($estConnecte && $_SESSION['comptable'] == 1) { 
 			?>
 			<div class="header">
@@ -99,7 +104,7 @@
                                 </a>
                             </li>
                             <li <?php if ($uc == 'suivrePaiementFrais') { ?>class="active"<?php } ?>> 
-                                <a href="index.php?uc=suivrePaiementFrais&action=">             <!-- ne pas oublier remplir action=  -->
+                                <a href="index.php?uc=suivrePaiementFrais&action=afficherFiche">      
                                     <!--<span class="glyphicon glyphicon-list-alt"></span>-->
                                     Suivre le paiement des fiches de frais
                                 </a>

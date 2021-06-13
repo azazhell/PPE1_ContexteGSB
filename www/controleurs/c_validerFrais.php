@@ -14,11 +14,9 @@ $lesVisiteurs = $pdo->getListeVisiteursNC($idVisiteur);
 foreach ($lesVisiteurs as $unVisiteur) {
     $id = $unVisiteur['id']; 
     $lesMois = $pdo->getLesMoisDisponibles($id);
-    var_dump($lesMois);
+    //var_dump($lesMois);
     
-    include 'vues/v_listeVisiteurs.php';
-    
-}
+}include 'vues/v_listeVisiteurs.php'; 
 /*
  * lors du foreach, 
  * duplication lié au placement de l'include "include 'vues/v_listeVisiteurs.php';"
