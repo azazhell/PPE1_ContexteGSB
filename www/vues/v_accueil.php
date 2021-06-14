@@ -41,8 +41,8 @@ if ($estConnecte && $_SESSION['comptable'] == 1) {
                            class="btn btn-success btn-lg" role="button">            
                             <!--<span class="glyphicon glyphicon-pencil"></span>-->
                             <br>Valider les fiches de frais</a>
-                        <a href="index.php?uc=suivrePaiementFrais&action=afficherFiche"
-                           class="btn btn-primary btn-lg" role="button">            
+                        <a href="index.php?uc=suivrePaiementFrais&action="
+                           class="btn btn-primary btn-lg" role="button">            <!-- changer valeur url après l'avoir créer (voir index.php)-->
                             <!--<span class="glyphicon glyphicon-list-alt"></span>-->
                             <br>Suivre le paiement des fiches de frais</a>
                     </div>

@@ -5,36 +5,37 @@
  * 
  * */
 
+/* le problème vient du foreach de selection d'id
+ * la liste mois ne propose que les mois pour l'id 'f4'
+ * soit le dernier de la liste d'id */
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $idVisiteur = $_SESSION['idVisiteur'];
 
 $lesVisiteurs = $pdo->getListeVisiteursNC($idVisiteur);
-
+include 'vues/v_listeVisiteurs.php';
 foreach ($lesVisiteurs as $unVisiteur) {
-    $id = $unVisiteur['id']; 
+    $id = $unVisiteur['id'];
     $lesMois = $pdo->getLesMoisDisponibles($id);
-    //var_dump($lesMois);
-    
-}include 'vues/v_listeVisiteurs.php'; 
-/*
- * lors du foreach, 
- * duplication lié au placement de l'include "include 'vues/v_listeVisiteurs.php';"
- * cependant la duplication fait fonctionner la liste déroulante des mois ...
- * grâce à la duplication justement
- */
+}        
+$lesCles = array_keys($lesMois);
+$moisASelectionner = $lesCles[0];
+include 'vues/v_listeMois.php';
+
+
 
 switch ($action) {
-    case 'selectionnerVisiteur':      
-
-        $lesCles = array_keys($lesMois);
-        $moisASelectionner = $lesCles[0];
+    case 'selectionnerVisiteur': 
 
         break;
     case 'voirFrais':
         $leVisiteur = filter_input(INPUT_POST, 'lstVisiteur', FILTER_SANITIZE_STRING);
         $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
-
+        $lesVisiteurs = $pdo->getListeVisiteursNC($idVisiteur);
+        foreach ($lesVisiteurs as $unVisiteur) {
+            $id = $unVisiteur['id'];
+        }
+        $lesMois = $pdo->getLesMoisDisponibles($id);
         $visiteurASelectionner = $leVisiteur;
         $moisASelectionner = $leMois;
         
@@ -67,9 +68,11 @@ switch ($action) {
         include 'vues/v_validerFrais.php';
         break;   
     case 'validerFicheFrais':
-
+        
+        include 'vues/v_listeFraisForfait.php';
+        include 'vues/v_listeFraisHorsForfait.php';
+        include 'vues/v_validerFrais.php';
         break;
-}        
-
-
+        
+}
 ?>

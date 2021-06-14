@@ -32,7 +32,6 @@ function estConnecte()
  * @param String $idVisiteur ID du visiteur
  * @param String $nom        Nom du visiteur
  * @param String $prenom     Prénom du visiteur
- * @param Boolean $comptable type du visiteur
  *
  * @return null
  */
