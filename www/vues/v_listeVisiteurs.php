@@ -1,4 +1,9 @@
 <?php
+/**
+ * Vue Liste des visiteurs
+ *
+ *
+ */
 ?>
 <div class="row">
     <div class="col-md-4">
@@ -31,5 +36,4 @@
             </div>
 		</form>
 	</div> 
-  
 </div>

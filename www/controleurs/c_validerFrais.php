@@ -5,13 +5,15 @@
  * 
  * */
 
-/* le problème vient du foreach de selection d'id
- * la liste mois ne propose que les mois pour l'id 'f4'
- * soit le dernier de la liste d'id */
-
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $idVisiteur = $_SESSION['idVisiteur'];
 
+
+/* le problème vient du foreach de selection d'id
+ * la liste mois ne propose que les mois pour l'id 'f4'
+ * soit le dernier de la liste d'id 
+ * trouver un moyen de passer outre ce problème sans utiliser le bug de duplication
+ */
 $lesVisiteurs = $pdo->getListeVisiteursNC($idVisiteur);
 include 'vues/v_listeVisiteurs.php';
 foreach ($lesVisiteurs as $unVisiteur) {
@@ -30,11 +32,6 @@ switch ($action) {
     case 'voirFrais':
         $leVisiteur = filter_input(INPUT_POST, 'lstVisiteur', FILTER_SANITIZE_STRING);
         $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
-        $lesVisiteurs = $pdo->getListeVisiteursNC($idVisiteur);
-        foreach ($lesVisiteurs as $unVisiteur) {
-            $id = $unVisiteur['id'];
-        }
-        $lesMois = $pdo->getLesMoisDisponibles($id);
         $visiteurASelectionner = $leVisiteur;
         $moisASelectionner = $leMois;
         
@@ -61,12 +58,20 @@ switch ($action) {
             include 'vues/v_erreurs.php';
         }
         
+        // réception de la valeur de suppression du frais hors forfait
+        $idFrais = filter_input(INPUT_GET, 'idFrais', FILTER_SANITIZE_STRING);
+        //trouver le moyen d'insérer 'REFUSE' sur le libellé du frais hors forfait
         
         include 'vues/v_listeFraisForfait.php';
         include 'vues/v_listeFraisHorsForfait.php';
         include 'vues/v_validerFrais.php';
         break;   
     case 'validerFicheFrais':
+        $etat = filter_input(INPUT_POST, 'validation', FILTER_SANITIZE_STRING);
+        if ($etat == "VA"){
+        $pdo->majEtatFicheFrais($id, $leMois, $etat);
+        }
+        //mettre à jour la date de modification de la fiche.
         
         include 'vues/v_listeFraisForfait.php';
         include 'vues/v_listeFraisHorsForfait.php';

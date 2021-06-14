@@ -15,7 +15,6 @@
  */
 
 #################### partie comptable ####################
-
 if ($estConnecte && $_SESSION['comptable'] == 1) {
 ?>
 <hr>
@@ -42,21 +41,17 @@ if ($estConnecte && $_SESSION['comptable'] == 1) {
                     <td> <?php echo $date ?></td>
                     <td> <?php echo $libelle ?></td>
                     <td><?php echo $montant ?></td>
-                    <td><button class="btn btn-success" type="submit">Corriger</button>
-                		<button class="btn btn-danger" type="reset">Réinitialiser</button></td>
+                    <td><a href="index.php?uc=validerFrais&action=correction&idFrais=<?php echo $id ?>" 
+                           onclick="return confirm('Voulez-vous vraiment supprimer ce frais?');">Supprimer ce frais</a></td>
                 </tr>
-                <?php
-            }
-            ?>
+                <?php } ?>
             </tbody>  
         </table>
     </div>
         <label>Nombre de justificatifs : </label>
-        <input	type="text"
-        		name=""
+        <input	type="text"	name=""
                 size="10" maxlength="5"         		
-        		value=""
-        		class="form-control" readonly>
+        		value="" class="form-control" readonly>
 </div>
 
 
