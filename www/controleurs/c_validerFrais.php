@@ -23,10 +23,9 @@ $moisASelectionner = $lesCles[0];
 include 'vues/v_listeMois.php';
 
 
-
 switch ($action) {
     case 'selectionnerVisiteur': 
-
+        //
         break;
     case 'voirFrais':
         $leVisiteur = filter_input(INPUT_POST, 'lstVisiteur', FILTER_SANITIZE_STRING);
